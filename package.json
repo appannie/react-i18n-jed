@@ -1,0 +1,86 @@
+{
+  "name": "react-jed",
+  "version": "0.0.1",
+  "description": "React i18n wrapper for jed, based on jed",
+  "author": "App Annie Engineering",
+  "files": [
+    "lib",
+    "index.js"
+  ],
+  "main": "index.js",
+  "keywords": [
+    "react-jed",
+    "jed",
+    "gettext",
+    "i18n",
+    "internationalization",
+    "localization"
+  ],
+  "devDependencies": {
+    "codecov": "^1.0.1",
+    "coveralls": "^2.13.1",
+    "husky": "^0.14.3",
+    "istanbul": "~0.4.5",
+    "jest": "^19.0.2",
+    "jest-cli": "^20.0.0",
+    "lint-staged": "^4.0.3",
+    "mocha": "^3.1.2",
+    "nsp": "^2.6.3",
+    "prettier": "^1.5.3"
+  },
+  "scripts": {
+    "test": "jest --coverage",
+    "prepublish": "nsp check",
+    "pretest": "eslint .",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "repository": "appannie/react-jed",
+  "license": "MIT",
+  "eslintConfig": {
+    "extends": [
+      "xo-space",
+      "prettier"
+    ],
+    "plugins": [
+      "prettier"
+    ],
+    "env": {
+      "jest": true,
+      "node": true
+    },
+    "rules": {
+      "indent": "off",
+      "prettier/prettier": [
+        "error",
+        {
+          "singleQuote": true,
+          "trailingComma": "es5",
+          "tabWidth": 4,
+          "printWidth": 90
+        }
+      ]
+    }
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coverageReporters": [
+      "lcov",
+      "text",
+      "html"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
+  }
+}
