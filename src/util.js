@@ -3,16 +3,8 @@ import Jed from 'jed';
 import fetchPonyfill from 'fetch-ponyfill';
 import Cookies from 'universal-cookie';
 
-import { checkStatus, parseJSON } from '../../ajax/api';
-
 const langJSONFileName = 'aa_react.json';
 const { fetch } = fetchPonyfill();
-
-function getI18n(localeJSON: Object) {
-    const i18n = new Jed(localeJSON);
-    return i18n;
-}
-
 export const LANG_MAP = {
     en: 'en-US',
     de: 'de-DE',
@@ -22,6 +14,20 @@ export const LANG_MAP = {
     ru: 'ru-RU',
     cn: 'zh-CN',
 };
+
+const checkStatus = (res: Response) => {
+    if (res.ok) {
+        return res;
+    }
+
+    throw new Error(`Fetch error: ${res.url} returned ${res.status} ${res.statusText}`);
+};
+const parseJSON = (res: Response) => res.json();
+
+function getI18n(localeJSON: Object) {
+    const i18n = new Jed(localeJSON);
+    return i18n;
+}
 
 async function getLocale(req?: Object) {
     let baseUrl = '';
