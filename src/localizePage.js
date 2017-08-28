@@ -1,13 +1,14 @@
 // @flow
 import React from 'react';
 import hoistStatics from 'hoist-non-react-statics';
-import noop from 'lodash/noop';
 
 import { getLocale, getI18n } from './util';
 import { type I18nType, type Lang } from '.';
 import I18nProvider from './I18nProvider';
 
 const onlySingularLocaleList = ['zh-CN', 'ko-KR', 'ja-JP'];
+
+const noop = () => {};
 
 /* eslint gettext/no-variable-string: 0 */
 export function wrapI18n(lang: Lang, i18n: I18nType): I18nType {
