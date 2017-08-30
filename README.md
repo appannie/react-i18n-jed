@@ -2,7 +2,7 @@
 
 ### i18n API:
 
-** All the `txt`, `pluralTxt` and `context` should be literal string.
+** All the `txt`, `pluralTxt` and `context` should be literal string. **
 
 ```js
 gettext(txt)
@@ -11,17 +11,36 @@ ngettext(txt, pluralTxt, count)
 npgettext(context, txt, pluralTxt, count)
 ```
 
-### i18n Provider
-We should get the i18n instance by `getI18n`, then pass it to <I18nProvider>. Then we can get it from `Component.props` in the whole components tree.
+### I18nProvider
+We should get the i18n instance by `getI18n`, then pass it to <I18nProvider>. Then we can get it from `Component.props` in the whole components tree cooperate with `translate()`.
 
-Get the i18n instance:
-`const i18n = getI18n(localeJSON)`
-
-Pass to provider:
 ```js
+import { getI18n, I18nProvider } from 'react-jed';
+
+
+const i18n = getI18n(localeJSON)
+
 <I18nProvider i18n={this.i18n}>
     <WrappedComponent i18n={this.i18n} {...this.props} />
 </I18nProvider>
+```
+
+The `localeJSON` should match the standard Gettext data format, like
+```js
+{
+    domain: 'messages',
+    language: 'en-US',
+    locale_data: {
+        messages: {
+            '': {
+                domain: 'messages',
+            },
+            'Ad Expense': ['Test Ad Expense'],
+            'App or Publisher': ['App or Publisher'],
+            Cat: ['Cat', 'Cats'],
+        },
+    },
+}
 ```
 
 ### Localize a component:
