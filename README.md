@@ -1,4 +1,11 @@
-# react-jed
+# react-jed [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
+
+React i18n for [Gettext](https://en.wikipedia.org/wiki/Gettext) based on [Jed](https://messageformat.github.io/Jed/)
+
+### Installation
+Npm: `npm i react-jed --save`
+Yarn: `yarn add react-jed`
+
 
 ### i18n API:
 
