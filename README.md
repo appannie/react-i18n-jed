@@ -77,3 +77,16 @@ import TranslatedComponent from '.';
 const Comp = TranslatedComponent.WrappedComponent;
 const tree = shallow(<Comp />);
 ```
+
+## License
+
+MIT © [App Annie](https://www.appannie.com/en/about/careers/engineering/)
+
+[npm-image]: https://badge.fury.io/js/react-jed.svg
+[npm-url]: https://npmjs.org/package/react-jed
+[travis-image]: https://travis-ci.org/appannie/react-jed.svg?branch=master
+[travis-url]: https://travis-ci.org/appannie/react-jed
+[daviddm-image]: https://david-dm.org/appannie/react-jed.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/appannie/react-jed
+[coveralls-image]: https://coveralls.io/repos/appannie/react-jed/badge.svg
+[coveralls-url]: https://coveralls.io/r/appannie/react-jed
