@@ -5,7 +5,7 @@ module.exports = {
         jest: true,
         node: true,
     },
-    plugins: ['prettier', 'flowtype', 'jest'],
+    plugins: ['prettier', 'flowtype'],
     rules: {
         'array-callback-return': 'off',
         indent: 'off',

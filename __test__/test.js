@@ -38,7 +38,7 @@ TestElement.contextTypes = {
 };
 
 describe('get i18n by Jed', () => {
-    it('gettext by i18n', () =>{
+    it('gettext by i18n', () => {
         const i18n = getI18n(localeJSON);
         expect(i18n.gettext('Ad Expense')).toBe('Test Ad Expense');
     });
