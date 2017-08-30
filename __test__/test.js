@@ -40,6 +40,7 @@ TestElement.contextTypes = {
 describe('get i18n by Jed', () => {
     it('gettext by i18n', () => {
         const i18n = getI18n(localeJSON);
+        expect(i18n.lang).toBe('en-US');
         expect(i18n.gettext('Ad Expense')).toBe('Test Ad Expense');
     });
 });
@@ -68,9 +69,21 @@ describe('translate Component', () => {
 });
 
 describe('mock i18n', () => {
-    it('gettext get text', () => {
+    it('gettext get translated message', () => {
         expect(mockI18n.gettext('txt')).toEqual('txt');
+    });
+
+    it('ngettext get translated message', () => {
+        expect(mockI18n.ngettext('a', 'b', 1)).toEqual('a');
         expect(mockI18n.ngettext('a', 'b', 2)).toEqual('b');
-        expect(mockI18n.npgettext('a', 'b', 'c', 2)).toEqual('b');
+    });
+
+    it('pgettext get translated message', () => {
+        expect(mockI18n.pgettext('ctx', 'a')).toEqual('a');
+    });
+
+    it('pgettext get translated message', () => {
+        expect(mockI18n.npgettext('a', 'b', 'c', 1)).toEqual('b');
+        expect(mockI18n.npgettext('a', 'b', 'c', 2)).toEqual('c');
     });
 });

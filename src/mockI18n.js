@@ -1,19 +1,20 @@
 // @flow
 const mockSingular = (key: string) => key;
-const mockPlural = (a: string, b: string, count: number) => {
+const mockContextSingular = (context: string, key: string) => key;
+const mockPlural = (key: string, pluralKey: string, count: number) => {
     if (count === 1) {
-        return a;
+        return key;
     }
-    return b;
+    return pluralKey;
 };
 
 const mockI18n = {
     lang: 'en-US',
     gettext: mockSingular,
     ngettext: mockPlural,
-    pgettext: mockSingular,
-    npgettext: (a: string, b: string, key: string, count: number) =>
-        mockPlural(a, b, count),
+    pgettext: mockContextSingular,
+    npgettext: (context: string, key: string, pluralKey: string, count: number) =>
+        mockPlural(key, pluralKey, count),
 };
 
 export default mockI18n;
