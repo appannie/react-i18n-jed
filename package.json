@@ -1,7 +1,7 @@
 {
   "name": "react-jed",
   "version": "0.0.1",
-  "description": "React i18n wrapper for jed, based on jed",
+  "description": "React i18n wrapper for jed, based on gettext",
   "author": "App Annie Engineering",
   "files": [
     "lib",

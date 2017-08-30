@@ -1,4 +1,3 @@
 {
-    "presets": ["es2015", "react", "flow"],
-    "plugins": []
+    "presets": ["es2015", "react", "flow"]
 }
