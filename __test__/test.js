@@ -38,8 +38,8 @@ TestElement.contextTypes = {
 };
 
 describe('get i18n by Jed', () => {
-    it('gettext by i18n', () => {
-        const i18n = Jed(localeJSON);
+    it('gettext by Jed', () => {
+        const i18n = new Jed(localeJSON);
         expect(i18n.gettext('Ad Expense')).toBe('Test Ad Expense');
     });
 });
