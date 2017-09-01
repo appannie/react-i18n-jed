@@ -1,0 +1,10 @@
+[ignore]
+.*/.flow-typed/.*
+.*/bin/.*
+
+[include]
+
+[libs]
+
+[options]
+module.system=haste
