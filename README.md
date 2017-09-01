@@ -19,13 +19,13 @@ npgettext(context, txt, pluralTxt, count)
 ```
 
 ### I18nProvider
-We should get the i18n instance by `getI18n`, then pass it to <I18nProvider>. Then we can get it from `Component.props` in the whole components tree cooperate with `translate()`.
+We should get the Jed instance to <I18nProvider>. Then we can get it from `Component.props` in the whole components tree cooperated with `translate()`.
 
 ```js
-import { getI18n, I18nProvider } from 'react-jed';
+import { I18nProvider, Jed } from 'react-jed';
 
 
-const i18n = getI18n(localeJSON)
+const i18n = new Jed(localeJSON);
 
 <I18nProvider i18n={this.i18n}>
     <WrappedComponent i18n={this.i18n} {...this.props} />

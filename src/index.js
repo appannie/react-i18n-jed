@@ -11,10 +11,4 @@ export type I18nType = {
     npgettext: (string, string, string, number) => string,
 };
 
-function getI18n(localeJSON: Object) {
-    const i18n = new Jed(localeJSON);
-    i18n.lang = localeJSON.language;
-    return i18n;
-}
-
-export { getI18n, I18nProvider, translate, sprintf };
+export { I18nProvider, translate, sprintf, Jed };

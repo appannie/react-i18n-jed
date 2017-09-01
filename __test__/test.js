@@ -2,7 +2,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import PropTypes from 'prop-types';
-import { getI18n, translate, I18nProvider } from '../src';
+import { Jed, translate, I18nProvider } from '../src';
 import mockI18n from '../src/mockI18n';
 
 const localeJSON = {
@@ -39,8 +39,7 @@ TestElement.contextTypes = {
 
 describe('get i18n by Jed', () => {
     it('gettext by i18n', () => {
-        const i18n = getI18n(localeJSON);
-        expect(i18n.lang).toBe('en-US');
+        const i18n = Jed(localeJSON);
         expect(i18n.gettext('Ad Expense')).toBe('Test Ad Expense');
     });
 });

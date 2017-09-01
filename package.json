@@ -16,8 +16,7 @@
     "internationalization",
     "localization"
   ],
-  "dependencies": {
-    "enzyme": "^2.9.1",
+  "peerDependencies": {
     "hoist-non-react-statics": "^2.3.0",
     "jed": "^1.1.1",
     "prop-types": "^15.5.10",
@@ -42,6 +41,7 @@
     "eslint-plugin-react": "^7.3.0",
     "flow-bin": "^0.53.1",
     "flow-typed": "^2.1.5",
+    "enzyme": "^2.9.1",
     "husky": "^0.14.3",
     "jest": "^19.0.2",
     "jest-cli": "^20.0.4",
