@@ -20,7 +20,7 @@ const localeJSON = {
     },
 };
 
-class TestElement extends React.Component {
+class TestElement extends React.Component<{}> {
     constructor(props, context) {
         super(props, context);
         this.i18n = context.i18n;

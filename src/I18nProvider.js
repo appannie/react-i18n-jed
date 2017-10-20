@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 
 import { type I18nType } from '.';
 
-class I18nProvider extends React.Component {
-    props: {
-        i18n: I18nType,
-        children?: any,
-    };
+type Props = {
+    i18n: I18nType,
+    children?: any,
+};
 
+class I18nProvider extends React.Component<Props> {
     getChildContext() {
         const { i18n } = this.props;
         return { i18n };

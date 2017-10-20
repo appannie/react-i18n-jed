@@ -25,6 +25,7 @@ module.exports = {
         'react/no-multi-comp': 'off',
         'react/sort-comp': 'off',
         'react/no-multi-comp': 'off',
+        'react/prop-types': 'off',
         'jsx-a11y/anchor-has-content': 'off',
         'jsx-a11y/href-no-hash': 'off',
         'jsx-a11y/label-has-for': 'off',
