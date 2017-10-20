@@ -22,8 +22,7 @@
   "dependencies": {
     "hoist-non-react-statics": "^2.3.0",
     "jed": "^1.1.1",
-    "prop-types": "^15.5.10",
-    "react": "^16.0.0"
+    "prop-types": "^15.5.10"
   },
   "devDependencies": {
     "babel": "^6.23.0",
