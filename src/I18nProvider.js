@@ -1,15 +1,13 @@
 // @flow
-import React from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 
 import { type I18nType } from '.';
 
-type Props = {
+class I18nProvider extends React.Component<{
     i18n: I18nType,
-    children?: any,
-};
-
-class I18nProvider extends React.Component<Props> {
+    children?: React.Node,
+}> {
     getChildContext() {
         const { i18n } = this.props;
         return { i18n };
