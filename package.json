@@ -7,7 +7,7 @@
     "lib",
     "index.js"
   ],
-  "main": "index.js",
+  "main": "dist/index.js",
   "keywords": [
     "react-jed",
     "jed",
@@ -57,7 +57,7 @@
   "scripts": {
     "test": "jest --coverage",
     "build": "babel src/ -d dist/ && flow-copy-source -v src/ dist/",
-    "prepublish": "nsp check",
+    "prepublish": "nsp check && npm run build",
     "publish": "npm run build",
     "pretest": "flow && eslint .",
     "precommit": "lint-staged"
