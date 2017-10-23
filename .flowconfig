@@ -1,0 +1,12 @@
+[ignore]
+.*/.flow-typed/.*
+.*/bin/.*
+.*/node_modules/jest-enzyme/.*
+.*/node_modules/enzyme-matchers/.*
+
+[include]
+
+[libs]
+
+[options]
+module.system=haste
