@@ -4,8 +4,6 @@ React i18n for [Gettext](https://en.wikipedia.org/wiki/Gettext) based on [Jed](h
 
 ### Installation
 
-With Npm:
-
 ```
 # With npm
 npm i --save react-i18n-jed jed
@@ -16,7 +14,7 @@ yarn add react-i18n-jed jed
 
 ### i18n API:
 
-** All the `txt`, `pluralTxt` and `context` should be literal string. **
+**All the `txt`, `pluralTxt` and `context` should be literal string.**
 
 ```js
 gettext(txt)
