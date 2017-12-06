@@ -1,11 +1,18 @@
-# react-jed [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
+# react-i18n-jed [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
 
 React i18n for [Gettext](https://en.wikipedia.org/wiki/Gettext) based on [Jed](https://messageformat.github.io/Jed/)
 
 ### Installation
-Npm: `npm i react-jed --save`
-Yarn: `yarn add react-jed`
 
+With Npm:
+
+```
+# With npm
+npm i --save react-i18n-jed jed
+
+# Or with yarn
+yarn add react-i18n-jed jed
+```
 
 ### i18n API:
 
@@ -22,8 +29,8 @@ npgettext(context, txt, pluralTxt, count)
 We should get the Jed instance to <I18nProvider>. Then we can get it from `Component.props` in the whole components tree cooperated with `translate()`.
 
 ```js
-import { I18nProvider, Jed } from 'react-jed';
-
+import { I18nProvider } from 'react-i18n-jed';
+import Jed from 'jed';
 
 const i18n = new Jed(localeJSON);
 
@@ -53,7 +60,7 @@ The `localeJSON` should match the standard Gettext data format, like
 ### Localize a component:
 
 ```js
-import { translate, type I18nType } from '../../modules/i18n';
+import { translate, type I18nType } from 'react-i18n-jed';
 
 class Comp extends React.Component {
     props: {
@@ -72,21 +79,22 @@ export default translate(Comp);
 In test files, you won't be able to use `shallow` rendering with the translated component. Instead, you'll want to access the wrapped component directly like so:
 
 ```js
+import mockI18n from 'react-i18n-jed/mockI18n';
 import TranslatedComponent from '.';
 
 const Comp = TranslatedComponent.WrappedComponent;
-const tree = shallow(<Comp />);
+const tree = shallow(<Comp i18n={mockI18n} />);
 ```
 
 ## License
 
 MIT © [App Annie](https://www.appannie.com/en/about/careers/engineering/)
 
-[npm-image]: https://badge.fury.io/js/react-jed.svg
-[npm-url]: https://npmjs.org/package/react-jed
-[travis-image]: https://travis-ci.org/appannie/react-jed.svg?branch=master
-[travis-url]: https://travis-ci.org/appannie/react-jed
-[daviddm-image]: https://david-dm.org/appannie/react-jed.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/appannie/react-jed
-[coveralls-image]: https://coveralls.io/repos/appannie/react-jed/badge.svg
-[coveralls-url]: https://coveralls.io/r/appannie/react-jed
+[npm-image]: https://badge.fury.io/js/react-i18n-jed.svg
+[npm-url]: https://npmjs.org/package/react-i18n-jed
+[travis-image]: https://travis-ci.org/appannie/react-i18n-jed.svg?branch=master
+[travis-url]: https://travis-ci.org/appannie/react-i18n-jed
+[daviddm-image]: https://david-dm.org/appannie/react-i18n-jed.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/appannie/react-i18n-jed
+[coveralls-image]: https://coveralls.io/repos/appannie/react-i18n-jed/badge.svg
+[coveralls-url]: https://coveralls.io/r/appannie/react-i18n-jed
