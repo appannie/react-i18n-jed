@@ -1,5 +1,5 @@
 {
-  "name": "react-jed",
+  "name": "react-i18n-jed",
   "version": "0.0.1",
   "description": "React i18n wrapper for jed, based on gettext",
   "author": "App Annie Engineering",
@@ -15,9 +15,11 @@
     "internationalization",
     "localization"
   ],
+  "peerDependencies": {
+    "jed": "^1.1.1"
+  },
   "dependencies": {
     "hoist-non-react-statics": "^2.3.0",
-    "jed": "^1.1.1",
     "prop-types": "^15.5.10",
     "react": "^15.6.1"
   },
