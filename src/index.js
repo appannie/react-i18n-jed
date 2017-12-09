@@ -2,6 +2,7 @@
 import Jed, { sprintf } from 'jed';
 import I18nProvider from './I18nProvider';
 import translate from './translate';
+import mockI18n from './mockI18n';
 
 export type I18nType = {
     lang: string,
@@ -11,4 +12,4 @@ export type I18nType = {
     npgettext: (string, string, string, number) => string,
 };
 
-export { I18nProvider, translate, sprintf, Jed };
+export { I18nProvider, translate, mockI18n, sprintf, Jed };
