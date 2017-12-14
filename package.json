@@ -1,9 +1,11 @@
 {
   "name": "react-i18n-jed",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "React i18n wrapper for jed, based on gettext",
   "author": "App Annie Engineering",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "main": "dist/index.js",
   "keywords": [
     "react-jed",
@@ -64,16 +66,28 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.js": ["eslint --fix", "git add"]
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
   },
   "repository": "appannie/react-i18n-jed",
   "license": "MIT",
   "jest": {
-    "setupFiles": ["<rootDir>/jest.setup.js"],
+    "setupFiles": [
+      "<rootDir>/jest.setup.js"
+    ],
     "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
     "testEnvironment": "jsdom",
-    "snapshotSerializers": ["enzyme-to-json/serializer"],
-    "coverageReporters": ["json", "lcov", "text", "html"],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text",
+      "html"
+    ],
     "coverageThreshold": {
       "global": {
         "branches": 100,
