@@ -5,9 +5,9 @@ import hoistStatics from 'hoist-non-react-statics';
 import type { I18nType } from '.';
 
 declare class TranslatedComponent<OP> extends React$Component<OP> {
-    static WrappedComponent: Class<React$Component<*>>,
-    props: OP,
-    state: void,
+    static WrappedComponent: Class<React$Component<*>>;
+    props: OP;
+    state: void;
 }
 
 declare type TranslatedComponentClass<OP> = Class<TranslatedComponent<OP>>;
