@@ -3,9 +3,7 @@
   "version": "0.0.1",
   "description": "React i18n wrapper for jed, based on gettext",
   "author": "App Annie Engineering",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "main": "dist/index.js",
   "keywords": [
     "react-jed",
@@ -15,46 +13,47 @@
     "internationalization",
     "localization"
   ],
-  "peerDependencies": {
-    "jed": "^1.1.1",
-    "react": "^15.6.1"
-  },
   "dependencies": {
     "hoist-non-react-statics": "^2.3.0",
-    "prop-types": "^15.5.10"
+    "jed": "^1.1.1",
+    "prop-types": "^15.5.10",
+    "react": "^16.2.0"
   },
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
-    "babel-eslint": "^7.2.3",
-    "babel-jest": "^20.0.3",
+    "babel-eslint": "^8.0.3",
+    "babel-jest": "^21.2.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
-    "coveralls": "^2.13.1",
-    "enzyme": "^2.9.1",
+    "coveralls": "^3.0.0",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
+    "enzyme-to-json": "^3.2.2",
     "eslint": "^4.4.1",
-    "eslint-config-airbnb": "^15.1.0",
+    "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.3.0",
     "eslint-plugin-flowtype": "^2.35.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-prettier": "^2.2.0",
     "eslint-plugin-react": "^7.3.0",
-    "flow-bin": "^0.55.0",
+    "flow-bin": "^0.61.0",
     "flow-copy-source": "^1.2.1",
     "flow-typed": "^2.1.5",
     "husky": "^0.14.3",
-    "jest": "^19.0.2",
-    "jest-cli": "^20.0.4",
-    "jest-enzyme": "^3.8.1",
+    "jest": "^21.2.1",
+    "jest-cli": "^21.2.1",
+    "jest-enzyme": "^4.0.1",
     "jest-serializer-enzyme": "^1.0.0",
-    "lint-staged": "^4.0.3",
-    "nsp": "^2.6.3",
+    "lint-staged": "^6.0.0",
+    "nsp": "^3.1.0",
     "prettier": "^1.5.3",
+    "raf": "^3.4.0",
     "react-addons-test-utils": "^15.6.0",
-    "react-dom": "^15.6.1"
+    "react-dom": "^16.2.0"
   },
   "scripts": {
     "test": "jest --coverage",
@@ -65,50 +64,16 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ]
+    "*.js": ["eslint --fix", "git add"]
   },
-  "repository": "appannie/react-jed",
+  "repository": "appannie/react-i18n-jed",
   "license": "MIT",
-  "eslintConfig": {
-    "extends": [
-      "xo-space",
-      "prettier"
-    ],
-    "plugins": [
-      "prettier"
-    ],
-    "env": {
-      "jest": true,
-      "node": true
-    },
-    "rules": {
-      "indent": "off",
-      "prettier/prettier": [
-        "error",
-        {
-          "singleQuote": true,
-          "trailingComma": "es5",
-          "tabWidth": 4,
-          "printWidth": 90
-        }
-      ]
-    }
-  },
   "jest": {
+    "setupFiles": ["<rootDir>/jest.setup.js"],
     "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
     "testEnvironment": "jsdom",
-    "snapshotSerializers": [
-      "<rootDir>/node_modules/jest-serializer-enzyme"
-    ],
-    "coverageReporters": [
-      "json",
-      "lcov",
-      "text",
-      "html"
-    ],
+    "snapshotSerializers": ["enzyme-to-json/serializer"],
+    "coverageReporters": ["json", "lcov", "text", "html"],
     "coverageThreshold": {
       "global": {
         "branches": 100,
