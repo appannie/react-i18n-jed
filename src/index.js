@@ -1,6 +1,6 @@
 // @flow
 import Jed, { sprintf } from 'jed';
-import I18nProvider, { I18nContext } from './I18nProvider';
+import I18nProvider from './I18nProvider';
 import translate from './translate';
 
 export type I18nType = {
@@ -11,4 +11,4 @@ export type I18nType = {
     npgettext: (string, string, string, number) => string,
 };
 
-export { I18nProvider, I18nContext, translate, sprintf, Jed };
+export { I18nProvider, translate, sprintf, Jed };
