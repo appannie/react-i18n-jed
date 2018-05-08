@@ -1,7 +1,6 @@
 // @flow
 import React from 'react';
-import { shallow, mount } from 'enzyme';
-import PropTypes from 'prop-types';
+import { mount } from 'enzyme';
 import { Jed, translate, I18nProvider } from '../src';
 import mockI18n from '../src/mockI18n';
 
@@ -21,9 +20,9 @@ const localeJSON = {
 };
 
 class TestElement extends React.Component<{}> {
-    constructor(props, context) {
-        super(props, context);
-        this.i18n = context.i18n;
+    constructor(props) {
+        super(props);
+        this.i18n = props.i18n;
     }
 
     i18n: Object;
@@ -33,10 +32,6 @@ class TestElement extends React.Component<{}> {
     }
 }
 
-TestElement.contextTypes = {
-    i18n: PropTypes.object,
-};
-
 describe('get i18n by Jed', () => {
     it('gettext by Jed', () => {
         const i18n = new Jed(localeJSON);
@@ -45,22 +40,24 @@ describe('get i18n by Jed', () => {
 });
 
 describe('<I18nProvider>', () => {
-    it('children get i18n from context', () => {
-        let testElement: any = null;
+    it('children get i18n from I18nProvider', () => {
+        const LocalizedTest = translate(TestElement);
         const eleWithProvider = mount(
             <I18nProvider i18n={mockI18n}>
-                <TestElement ref={component => (testElement = component)} />
+                <LocalizedTest />
             </I18nProvider>
         );
-        expect(testElement.context.i18n).toEqual(mockI18n);
         expect(eleWithProvider).toMatchSnapshot();
+
+        const i18nFromProvider = eleWithProvider.find('TestElement').prop('i18n');
+        expect(i18nFromProvider).toEqual(mockI18n);
     });
 });
 
 describe('translate Component', () => {
     it('render translated component', () => {
         const LocalizedEle = translate(TestElement);
-        const localizedEle = shallow(<LocalizedEle i18n={mockI18n} />);
+        const localizedEle = mount(<LocalizedEle i18n={mockI18n} />);
         const instEle = localizedEle.instance();
         expect(instEle.props.i18n).toEqual(mockI18n);
         expect(localizedEle).toMatchSnapshot();

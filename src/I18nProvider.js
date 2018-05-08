@@ -1,26 +1,24 @@
 // @flow
 import * as React from 'react';
-import PropTypes from 'prop-types';
-
 import { type I18nType } from '.';
 
+const I18nContext = React.createContext();
+
+/* eslint-disable react/prefer-stateless-function */
 class I18nProvider extends React.Component<{
     i18n: I18nType,
     children?: React.Node,
 }> {
-    getChildContext() {
-        const { i18n } = this.props;
-        return { i18n };
-    }
-
     render() {
-        const { children } = this.props;
-        return React.Children.only(children);
+        return (
+            <I18nContext.Provider value={this.props.i18n}>
+                {this.props.children}
+            </I18nContext.Provider>
+        );
     }
 }
 
-I18nProvider.childContextTypes = {
-    i18n: PropTypes.object,
-};
+export { I18nContext };
 
 export default I18nProvider;
+/* eslint-enable react/prefer-stateless-function */
