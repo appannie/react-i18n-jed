@@ -19,7 +19,9 @@ const localeJSON = {
     },
 };
 
-class TestElement extends React.Component<{}> {
+class TestElement extends React.Component<{
+    testProp: string,
+}> {
     constructor(props) {
         super(props);
         this.i18n = props.i18n;
@@ -44,7 +46,7 @@ describe('<I18nProvider>', () => {
         const LocalizedTest = translate(TestElement);
         const eleWithProvider = mount(
             <I18nProvider i18n={mockI18n}>
-                <LocalizedTest />
+                <LocalizedTest testProp="required" />
             </I18nProvider>
         );
         expect(eleWithProvider).toMatchSnapshot();
@@ -57,7 +59,7 @@ describe('<I18nProvider>', () => {
 describe('translate Component', () => {
     it('render translated component', () => {
         const LocalizedEle = translate(TestElement);
-        const localizedEle = mount(<LocalizedEle i18n={mockI18n} />);
+        const localizedEle = mount(<LocalizedEle i18n={mockI18n} testProp="required" />);
         const instEle = localizedEle.instance();
         expect(instEle.props.i18n).toEqual(mockI18n);
         expect(localizedEle).toMatchSnapshot();
