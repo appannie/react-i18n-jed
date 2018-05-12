@@ -12,7 +12,9 @@ exports[`<I18nProvider> children get i18n from I18nProvider 1`] = `
     }
   }
 >
-  <Translate(TestElement)>
+  <Translate(TestElement)
+    testProp="required"
+  >
     <TestElement
       i18n={
         Object {
@@ -23,6 +25,7 @@ exports[`<I18nProvider> children get i18n from I18nProvider 1`] = `
           "pgettext": [Function],
         }
       }
+      testProp="required"
     >
       <div>
         Test
@@ -43,6 +46,7 @@ exports[`translate Component render translated component 1`] = `
       "pgettext": [Function],
     }
   }
+  testProp="required"
 >
   <TestElement
     i18n={
@@ -54,6 +58,7 @@ exports[`translate Component render translated component 1`] = `
         "pgettext": [Function],
       }
     }
+    testProp="required"
   >
     <div>
       Test
