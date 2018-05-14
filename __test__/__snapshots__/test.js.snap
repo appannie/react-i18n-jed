@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<I18nProvider> children get i18n from context 1`] = `
+exports[`<I18nProvider> children get i18n from I18nProvider 1`] = `
 <I18nProvider
   i18n={
     Object {
@@ -12,16 +12,31 @@ exports[`<I18nProvider> children get i18n from context 1`] = `
     }
   }
 >
-  <TestElement>
-    <div>
-      Test
-    </div>
-  </TestElement>
+  <Translate(TestElement)
+    testProp="required"
+  >
+    <TestElement
+      i18n={
+        Object {
+          "gettext": [Function],
+          "lang": "en-US",
+          "ngettext": [Function],
+          "npgettext": [Function],
+          "pgettext": [Function],
+        }
+      }
+      testProp="required"
+    >
+      <div>
+        Test
+      </div>
+    </TestElement>
+  </Translate(TestElement)>
 </I18nProvider>
 `;
 
 exports[`translate Component render translated component 1`] = `
-<TestElement
+<Translate(TestElement)
   i18n={
     Object {
       "gettext": [Function],
@@ -31,5 +46,23 @@ exports[`translate Component render translated component 1`] = `
       "pgettext": [Function],
     }
   }
-/>
+  testProp="required"
+>
+  <TestElement
+    i18n={
+      Object {
+        "gettext": [Function],
+        "lang": "en-US",
+        "ngettext": [Function],
+        "npgettext": [Function],
+        "pgettext": [Function],
+      }
+    }
+    testProp="required"
+  >
+    <div>
+      Test
+    </div>
+  </TestElement>
+</Translate(TestElement)>
 `;
