@@ -1,6 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<I18nProvider> children get i18n from I18nProvider 1`] = `
+<TestElement
+  testProp="required"
+/>
+`;
+
+exports[`<I18nProvider> children get i18n from I18nProvider 2`] = `
 <I18nProvider
   i18n={
     Object {
@@ -65,4 +71,37 @@ exports[`translate Component render translated component 1`] = `
     </div>
   </TestElement>
 </Translate(TestElement)>
+`;
+
+exports[`translate Component render translated stateless component 1`] = `
+<Translate(StatelessTest)
+  i18n={
+    Object {
+      "gettext": [Function],
+      "lang": "en-US",
+      "ngettext": [Function],
+      "npgettext": [Function],
+      "pgettext": [Function],
+    }
+  }
+  testProp="required"
+>
+  <StatelessTest
+    i18n={
+      Object {
+        "gettext": [Function],
+        "lang": "en-US",
+        "ngettext": [Function],
+        "npgettext": [Function],
+        "pgettext": [Function],
+      }
+    }
+    testProp="required"
+  >
+    <div>
+      My
+      required
+    </div>
+  </StatelessTest>
+</Translate(StatelessTest)>
 `;
