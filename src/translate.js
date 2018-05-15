@@ -4,10 +4,6 @@ import hoistStatics from 'hoist-non-react-statics';
 import type { I18nType } from '.';
 import { I18nContext } from './I18nProvider';
 
-type WrappedComponentClass<P> = Class<
-    React$Component<$Supertype<{ i18n: I18nType } & P>>
->;
-
 declare class TranslatedComponent<OP> extends React$Component<OP> {
     static WrappedComponent: Class<React$Component<OP>>;
     static displayName: ?string;
@@ -18,7 +14,7 @@ declare class TranslatedComponent<OP> extends React$Component<OP> {
 declare type TranslatedComponentClass<OP> = Class<TranslatedComponent<OP>>;
 
 function translate<Props>(
-    WrappedComponent: WrappedComponentClass<Props>
+    WrappedComponent: React.ComponentType<$Supertype<{ i18n: I18nType } & Props>>
 ): TranslatedComponentClass<Props> {
     class Translate extends React.Component<Props> {
         static WrappedComponent = WrappedComponent;
