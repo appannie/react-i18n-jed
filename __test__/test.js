@@ -44,11 +44,14 @@ describe('get i18n by Jed', () => {
 describe('<I18nProvider>', () => {
     it('children get i18n from I18nProvider', () => {
         const LocalizedTest = translate(TestElement);
+        expect(LocalizedTest.WrappedComponent).toMatchSnapshot();
+
         const eleWithProvider = mount(
             <I18nProvider i18n={mockI18n}>
                 <LocalizedTest testProp="required" />
             </I18nProvider>
         );
+
         expect(eleWithProvider).toMatchSnapshot();
 
         const i18nFromProvider = eleWithProvider.find('TestElement').prop('i18n');
