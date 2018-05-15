@@ -7,7 +7,15 @@ import { I18nContext } from './I18nProvider';
 type WrappedComponentClass<P> = Class<
     React$Component<$Supertype<{ i18n: I18nType } & P>>
 >;
-type TranslatedComponentClass<P> = Class<React$Component<P>>;
+
+declare class TranslatedComponent<OP> extends React$Component<OP> {
+    static WrappedComponent: Class<React$Component<OP>>;
+    static displayName: ?string;
+    props: OP;
+    state: void;
+}
+
+declare type TranslatedComponentClass<OP> = Class<TranslatedComponent<OP>>;
 
 function translate<Props>(
     WrappedComponent: WrappedComponentClass<Props>
@@ -26,7 +34,8 @@ function translate<Props>(
         }
     }
 
-    return hoistStatics(Translate, WrappedComponent);
+    const Output: any = hoistStatics(Translate, WrappedComponent);
+    return Output;
 }
 
 export default translate;
