@@ -16,14 +16,11 @@
     "localization"
   ],
   "dependencies": {
-    "enzyme-context-patch": "^0.0.7",
     "hoist-non-react-statics": "^2.5.0",
     "jed": "^1.1.1",
-    "prop-types": "^15.5.10",
     "react": "^16.3.2"
   },
   "devDependencies": {
-    "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.1.1",
     "babel-jest": "^22.4.3",
@@ -47,8 +44,7 @@
     "flow-copy-source": "^1.2.1",
     "flow-typed": "^2.4.0",
     "husky": "^0.14.3",
-    "jest": "^21.2.1",
-    "jest-cli": "^21.2.1",
+    "jest": "^22.4.3",
     "jest-enzyme": "^6.0.0",
     "jest-serializer-enzyme": "^1.0.0",
     "lint-staged": "^7.1.0",
