@@ -1,8 +1,8 @@
 // @flow
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import { Jed, translate, I18nProvider, type I18nType } from '../src';
-import mockI18n, { I18nContext } from '../src/mockI18n';
+import mockI18n from '../src/mockI18n';
 
 const localeJSON = {
     domain: 'messages',
@@ -62,12 +62,6 @@ describe('<I18nProvider>', () => {
 });
 
 describe('translate Component', () => {
-    it('test mock I18nContext', () => {
-        const Context: any = I18nContext;
-        expect(
-            shallow(<Context.Consumer>{i18n => <div>{i18n}</div>}</Context.Consumer>)
-        ).toMatchSnapshot();
-    });
     it('render translated component', () => {
         const LocalizedEle = translate(TestElement);
         const localizedEle = mount(<LocalizedEle i18n={mockI18n} testProp="required" />);

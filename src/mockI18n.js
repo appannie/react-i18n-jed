@@ -1,6 +1,4 @@
 // @flow
-const I18nContext = require('./I18nContext');
-
 const mockSingular = (key: string) => key;
 const mockContextSingular = (context: string, key: string) => key;
 const mockPlural = (key: string, pluralKey: string, count: number) => {
@@ -19,10 +17,4 @@ const mockI18n = {
         mockPlural(key, pluralKey, count),
 };
 
-jest.mock('./I18nContext', () => ({
-    Consumer: props => props.children(mockI18n),
-}));
-
 export default mockI18n;
-
-export { I18nContext };
