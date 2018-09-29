@@ -19,19 +19,13 @@ const localeJSON = {
     },
 };
 
-class TestElement extends React.Component<{
+class TestElement extends React.PureComponent<{
     testProp: string,
     i18n: I18nType,
 }> {
-    i18n: I18nType;
-
-    constructor(props) {
-        super(props);
-        this.i18n = this.props.i18n;
-    }
-
     render() {
-        return <div>Test</div>;
+        const { i18n } = this.props;
+        return <div>{i18n.gettext('Test')}</div>;
     }
 }
 

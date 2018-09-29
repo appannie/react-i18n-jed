@@ -22,6 +22,7 @@ function translate<
 >(WrappedComponent: Com): TranslatedComponentClass<Props, Com> & ST {
     class Translate extends React.Component<Props> {
         static WrappedComponent = WrappedComponent;
+
         static displayName = `Translate(${WrappedComponent.displayName ||
             WrappedComponent.name})`;
 
