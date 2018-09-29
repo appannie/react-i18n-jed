@@ -2,6 +2,15 @@
 
 exports[`<I18nProvider> children get i18n from I18nProvider 1`] = `
 <TestElement
+  i18n={
+    Object {
+      "gettext": [Function],
+      "lang": "en-US",
+      "ngettext": [Function],
+      "npgettext": [Function],
+      "pgettext": [Function],
+    }
+  }
   testProp="required"
 />
 `;

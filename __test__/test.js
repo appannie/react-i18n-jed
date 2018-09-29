@@ -19,18 +19,13 @@ const localeJSON = {
     },
 };
 
-class TestElement extends React.Component<{
+class TestElement extends React.PureComponent<{
     testProp: string,
+    i18n: I18nType,
 }> {
-    constructor(props) {
-        super(props);
-        this.i18n = props.i18n;
-    }
-
-    i18n: Object;
-
     render() {
-        return <div>Test</div>;
+        const { i18n } = this.props;
+        return <div>{i18n.gettext('Test')}</div>;
     }
 }
 
@@ -46,7 +41,7 @@ describe('<I18nProvider>', () => {
         const LocalizedTest = translate(TestElement);
         const WrappedTest = LocalizedTest.WrappedComponent;
 
-        expect(<WrappedTest testProp="required" />).toMatchSnapshot();
+        expect(<WrappedTest testProp="required" i18n={mockI18n} />).toMatchSnapshot();
 
         const eleWithProvider = mount(
             <I18nProvider i18n={mockI18n}>

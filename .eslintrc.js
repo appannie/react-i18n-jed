@@ -37,14 +37,6 @@ module.exports = {
                 devDependencies: ['jest.setup.js', '**/test.js', '**/*.test.js'],
             },
         ],
-        'prettier/prettier': [
-            'error',
-            {
-                singleQuote: true,
-                trailingComma: 'es5',
-                tabWidth: 4,
-                printWidth: 90,
-            },
-        ],
+        'prettier/prettier': 'error',
     },
 };
