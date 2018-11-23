@@ -17,9 +17,8 @@ type InjectedProps = { i18n: I18nType };
 
 function translate<
     Com: React.ComponentType<*>,
-    Props: $Diff<React.ElementConfig<Com>, InjectedProps>,
-    ST: { [_: $Keys<Com>]: any }
->(WrappedComponent: Com): TranslatedComponentClass<Props, Com> & ST {
+    Props: $Diff<React.ElementConfig<Com>, InjectedProps>
+>(WrappedComponent: Com): TranslatedComponentClass<Props, Com> {
     class Translate extends React.Component<Props> {
         static WrappedComponent = WrappedComponent;
 
