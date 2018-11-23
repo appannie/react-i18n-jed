@@ -1,4 +1,5 @@
 // @flow
+/* eslint-disable no-redeclare */
 import * as React from 'react';
 import hoistStatics from 'hoist-non-react-statics';
 import type { I18nType } from '.';
@@ -15,11 +16,18 @@ declare type TranslatedComponentClass<OP, Com> = Class<TranslatedComponent<OP, C
 
 type InjectedProps = { i18n: I18nType };
 
-function translate<
-    Com: React.ComponentType<*>,
+declare function translate<
+    ST: {},
+    Com: React.ComponentType<*> & ST,
     Props: $Diff<React.ElementConfig<Com>, InjectedProps>
->(WrappedComponent: Com): TranslatedComponentClass<Props, Com> {
-    class Translate extends React.Component<Props> {
+>(
+    WrappedComponent: Com
+): TranslatedComponentClass<Props, Com> & ST;
+
+function translate(WrappedComponent: React.ComponentType<*>) {
+    class Translate extends React.Component<
+        $Diff<React.ElementConfig<React.ComponentType<*>>, InjectedProps>
+    > {
         static WrappedComponent = WrappedComponent;
 
         static displayName = `Translate(${WrappedComponent.displayName ||
