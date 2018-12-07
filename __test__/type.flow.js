@@ -2,6 +2,7 @@
 /* eslint-disable */
 import * as React from 'react';
 import { translate, type I18nType } from '../src';
+import mockI18n from '../src/mockI18n';
 
 let result;
 
@@ -24,6 +25,11 @@ const ComponentA = ({
 
 const TComponentA = translate(ComponentA);
 result = <TComponentA content="foo">bar</TComponentA>;
+result = (
+    <TComponentA.WrappedComponent content="foo" i18n={mockI18n}>
+        bar
+    </TComponentA.WrappedComponent>
+);
 
 // Case 2: simple class component
 class ComponentB extends React.PureComponent<{
@@ -82,7 +88,7 @@ const TComponentC = translate(ComponentC);
 result = <TComponentC content="foo">bar</TComponentC>;
 
 ComponentC.method('foo');
-TComponentC.method('foo');
+TComponentC.WrappedComponent.method('foo');
 
 // Case 4: class component with defaultProps
 class ComponentD extends React.Component<{
