@@ -57,7 +57,7 @@
     "build": "babel src/ -d dist/ && flow-copy-source -v src/ dist/",
     "prepublish": "npm run build",
     "publish": "npm run build",
-    "pretest": "flow-typed install --overwrite && flow && yarn badtest && eslint ."
+    "pretest": "flow-typed install --overwrite && flow && npm run badtest && eslint ."
   },
   "lint-staged": {
     "*.js": [
