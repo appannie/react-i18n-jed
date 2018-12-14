@@ -2,3 +2,4 @@ coverage
 node_modules
 flow-typed
 dist
+.DS_Store

@@ -1,27 +1,23 @@
-// @flow
+// @flow strict
+/* eslint-disable no-redeclare */
 import * as React from 'react';
-import hoistStatics from 'hoist-non-react-statics';
 import type { I18nType } from '.';
 import { I18nContext } from './I18nProvider';
-
-declare class TranslatedComponent<OP, Com> extends React$Component<OP> {
-    static WrappedComponent: Com;
-    static displayName: ?string;
-    props: OP;
-    state: void;
-}
-
-declare type TranslatedComponentClass<OP, Com> = Class<TranslatedComponent<OP, Com>>;
 
 type InjectedProps = { i18n: I18nType };
 
 function translate<
     Com: React.ComponentType<*>,
-    Props: $Diff<React.ElementConfig<Com>, InjectedProps>,
-    ST: { [_: $Keys<Com>]: any }
->(WrappedComponent: Com): TranslatedComponentClass<Props, Com> & ST {
+    Props: $Diff<React.ElementConfig<Com>, InjectedProps>
+>(
+    WrappedComponent: Com
+): React.ComponentType<Props> & {
+    WrappedComponent: Com,
+    // To match default react displayName prop type
+    displayName?: ?string,
+} {
     class Translate extends React.Component<Props> {
-        static WrappedComponent = WrappedComponent;
+        static WrappedComponent: Com = WrappedComponent;
 
         static displayName = `Translate(${WrappedComponent.displayName ||
             WrappedComponent.name})`;
@@ -35,8 +31,7 @@ function translate<
         }
     }
 
-    const Output: any = hoistStatics(Translate, WrappedComponent);
-    return Output;
+    return Translate;
 }
 
 export default translate;

@@ -1,4 +1,4 @@
-// @flow
+// @flow strict
 import React from 'react';
 import { mount } from 'enzyme';
 import { Jed, translate, I18nProvider, type I18nType } from '../src';
