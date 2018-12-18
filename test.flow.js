@@ -8,9 +8,13 @@ process.on('exit', code => {
     console.log('---------');
     console.log('');
     if (code === 0) {
-        console.log('Successful! The bad case tests work as expected!');
+        console.log(
+            '\x1b[36m%s\x1b[0m',
+            'Successful! The bad case tests work as expected!'
+        );
+        // console.log();
     } else {
-        console.log('Failed! The bad case tests get broken!');
+        console.log('\x1b[31m', 'Failed! The bad case tests get broken!');
     }
     console.log('');
 });

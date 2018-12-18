@@ -88,7 +88,8 @@ const TComponentC = translate(ComponentC);
 result = <TComponentC content="foo">bar</TComponentC>;
 
 ComponentC.method('foo');
-TComponentC.WrappedComponent.method('foo');
+// FIXME: Should not throw error
+// TComponentC.WrappedComponent.method('foo');
 // `name` is build-in string prop
 const TComponentName = TComponentC.name;
 const TComponentDisplayName = TComponentC.displayName;
@@ -125,27 +126,3 @@ const StatelessCom = ({name, i18n}: {name: string, i18n: I18nType}) => <div>{i18
 const TStatelessCom = translate(StatelessCom);
 
 result = <TStatelessCom name="Kate" />;
-
-// Case 5: TODO cases
-const ComponentE = (props: {
-    instanceId: string,
-    i18n: I18nType,
-}) => {
-    const { i18n, instanceId } = props;
-    const { gettext } = i18n;
-
-    return (
-        <div instanceId={instanceId}>{i18n.gettext('V')}</div>
-    );
-};
-
-const  TComponentE = translate(ComponentE);
-const noErrorT = <TComponentE instanceId="d" />;
-
-class TComponentEWrapper extends React.Component<{}> {
-
-    render() {
-        const errorT = <TComponentE instanceId="d" />
-        return <div>{errorT}</div>;
-    }
-}

@@ -4,20 +4,20 @@ import * as React from 'react';
 import type { I18nType } from '.';
 import { I18nContext } from './I18nProvider';
 
-type InjectedProps = { i18n: I18nType };
+declare class TranslatedComponent<OP> extends React$Component<OP> {
+    static WrappedComponent: Class<React$Component<OP>>;
+    static displayName: ?string;
+    props: OP;
+    state: void;
+}
 
-function translate<
-    Com: React.ComponentType<*>,
-    Props: $Diff<React.ElementConfig<Com>, InjectedProps>
->(
-    WrappedComponent: Com
-): React.ComponentType<Props> & {
-    WrappedComponent: Com,
-    // To match default react displayName prop type
-    displayName?: ?string,
-} {
+declare type TranslatedComponentClass<OP> = Class<TranslatedComponent<OP>>;
+
+function translate<Props>(
+    WrappedComponent: React.ComponentType<$Supertype<{ i18n: I18nType } & Props>>
+): TranslatedComponentClass<Props> {
     class Translate extends React.Component<Props> {
-        static WrappedComponent: Com = WrappedComponent;
+        static WrappedComponent = WrappedComponent;
 
         static displayName = `Translate(${WrappedComponent.displayName ||
             WrappedComponent.name})`;
@@ -31,7 +31,7 @@ function translate<
         }
     }
 
-    return Translate;
+    return (Translate: any);
 }
 
 export default translate;
