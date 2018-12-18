@@ -140,11 +140,12 @@ const ComponentE = (props: {
 };
 
 const  TComponentE = translate(ComponentE);
+const noErrorT = <TComponentE instanceId="d" />;
 
 class TComponentEWrapper extends React.Component<{}> {
 
     render() {
-        const t = <TComponentE instanceId="d" onChange={() => {}} />
-        return <div>{t}</div>;
+        const errorT = <TComponentE instanceId="d" />
+        return <div>{errorT}</div>;
     }
 }
