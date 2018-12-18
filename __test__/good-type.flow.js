@@ -120,5 +120,8 @@ class ComponentD extends React.Component<{
     }
 }
 
-const TComponentD = translate(ComponentD);
-result = <TComponentD>bar</TComponentD>;
+// Case 4: React stateless component
+const StatelessCom = ({name, i18n}: {name: string, i18n: I18nType}) => <div>{i18n.gettext('S')}</div>
+const TStatelessCom = translate(StatelessCom);
+
+result = <TStatelessCom name="Kate" />;

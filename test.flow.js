@@ -46,6 +46,10 @@ const runTest = filePath => {
     });
 };
 
-const badCases = ['bad-props.flow.js', 'bad-static-props.flow.js'];
+const badCases = [
+    'bad-props.flow.js',
+    'bad-static-props.flow.js',
+    'bad-props-stateless-component.flow.js',
+];
 
 badCases.forEach(filePath => runTest(filePath));
