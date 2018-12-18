@@ -125,3 +125,26 @@ const StatelessCom = ({name, i18n}: {name: string, i18n: I18nType}) => <div>{i18
 const TStatelessCom = translate(StatelessCom);
 
 result = <TStatelessCom name="Kate" />;
+
+// Case 5: TODO cases
+const ComponentE = (props: {
+    instanceId: string,
+    i18n: I18nType,
+}) => {
+    const { i18n, instanceId } = props;
+    const { gettext } = i18n;
+
+    return (
+        <div instanceId={instanceId}>{i18n.gettext('V')}</div>
+    );
+};
+
+const  TComponentE = translate(ComponentE);
+
+class TComponentEWrapper extends React.Component<{}> {
+
+    render() {
+        const t = <TComponentE instanceId="d" onChange={() => {}} />
+        return <div>{t}</div>;
+    }
+}
