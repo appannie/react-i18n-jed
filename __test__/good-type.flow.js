@@ -94,6 +94,14 @@ ComponentC.method('foo');
 const TComponentName = TComponentC.name;
 const TComponentDisplayName = TComponentC.displayName;
 
+class DisplayComponent1 extends React.Component<{}> {
+    render() {
+        return <div><TComponentC content="foo" >child</TComponentC></div>
+    }
+}
+
+result = <DisplayComponent1 />
+
 // Case 4: class component with defaultProps
 class ComponentD extends React.Component<{
     i18n: I18nType,
@@ -127,13 +135,13 @@ const TComponentD = translate(ComponentD);
 
 result = <TComponentD age={12} />;
 
-class DisplayComponent extends React.Component<{}> {
+class DisplayComponent2 extends React.Component<{}> {
     render() {
         return <div><TComponentD age={12} /></div>
     }
 }
 
-result = <DisplayComponent />
+result = <DisplayComponent2 />
 
 // Case 5: React stateless component
 const StatelessCom = ({name, i18n}: {name: string, i18n: I18nType}) => <div>{i18n.gettext('S')}</div>
