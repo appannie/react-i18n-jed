@@ -98,7 +98,7 @@ const TComponentDisplayName = TComponentC.displayName;
 class ComponentD extends React.Component<{
     i18n: I18nType,
     content: string,
-    children: React.Node,
+    age: number,
 }> {
     static defaultProps = {
         content: 'foo',
@@ -109,20 +109,36 @@ class ComponentD extends React.Component<{
     }
 
     render() {
-        const { i18n, content, children } = this.props;
+        const { i18n, content, age } = this.props;
 
         return (
             <div>
                 {i18n.gettext('hey')}
                 {content}
-                {children}
+                {age}
             </div>
         );
     }
 }
 
-// Case 4: React stateless component
+const componentD = <ComponentD age={12} i18n={mockI18n} />
+
+const TComponentD = translate(ComponentD);
+
+result = <TComponentD age={12} />;
+
+class DisplayComponent extends React.Component<{}> {
+    render() {
+        return <div><TComponentD age={12} /></div>
+    }
+}
+
+result = <DisplayComponent />
+
+// Case 5: React stateless component
 const StatelessCom = ({name, i18n}: {name: string, i18n: I18nType}) => <div>{i18n.gettext('S')}</div>
 const TStatelessCom = translate(StatelessCom);
 
 result = <TStatelessCom name="Kate" />;
+
+
