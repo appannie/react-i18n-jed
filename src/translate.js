@@ -1,33 +1,25 @@
-// @flow
+// @flow strict
 /* eslint-disable no-redeclare */
 import * as React from 'react';
-import hoistStatics from 'hoist-non-react-statics';
 import type { I18nType } from '.';
 import { I18nContext } from './I18nProvider';
 
-declare class TranslatedComponent<OP, Com> extends React$Component<OP> {
-    static WrappedComponent: Com;
+type InjectedProps = { i18n: I18nType };
+
+declare class TranslatedComponent<OP> extends React$Component<OP> {
+    static WrappedComponent: Class<React$Component<OP>>;
     static displayName: ?string;
     props: OP;
     state: void;
 }
 
-declare type TranslatedComponentClass<OP, Com> = Class<TranslatedComponent<OP, Com>>;
+declare type TranslatedComponentClass<OP> = Class<TranslatedComponent<OP>>;
 
-type InjectedProps = { i18n: I18nType };
-
-declare function translate<
-    ST: {},
-    Com: React.ComponentType<*> & ST,
+function translate<
+    Com: React$ComponentType<*>,
     Props: $Diff<React.ElementConfig<Com>, InjectedProps>
->(
-    WrappedComponent: Com
-): TranslatedComponentClass<Props, Com> & ST;
-
-function translate(WrappedComponent: React.ComponentType<*>) {
-    class Translate extends React.Component<
-        $Diff<React.ElementConfig<React.ComponentType<*>>, InjectedProps>
-    > {
+>(WrappedComponent: Com): TranslatedComponentClass<Props> {
+    class Translate extends React.Component<Props> {
         static WrappedComponent = WrappedComponent;
 
         static displayName = `Translate(${WrappedComponent.displayName ||
@@ -42,8 +34,7 @@ function translate(WrappedComponent: React.ComponentType<*>) {
         }
     }
 
-    const Output: any = hoistStatics(Translate, WrappedComponent);
-    return Output;
+    return (Translate: any);
 }
 
 export default translate;

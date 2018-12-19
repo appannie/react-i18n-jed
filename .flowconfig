@@ -1,8 +1,8 @@
 [ignore]
-.*/.flow-typed/.*
 .*/bin/.*
 .*/node_modules/jest-enzyme/.*
 .*/node_modules/enzyme-matchers/.*
+.*/__test__/bad-type/.*
 
 [include]
 
