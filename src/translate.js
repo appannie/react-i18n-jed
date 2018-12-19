@@ -35,7 +35,7 @@ function translate<
         }
     }
 
-    return hoistStatics(Translate, WrappedComponent);
+    return (hoistStatics(Translate, WrappedComponent): any);
 }
 
 export default translate;
