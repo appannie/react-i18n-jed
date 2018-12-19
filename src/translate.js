@@ -1,6 +1,7 @@
 // @flow strict
 /* eslint-disable no-redeclare */
 import * as React from 'react';
+import hoistStatics from 'hoist-non-react-statics';
 import type { I18nType } from '.';
 import { I18nContext } from './I18nProvider';
 
@@ -34,7 +35,7 @@ function translate<
         }
     }
 
-    return (Translate: any);
+    return hoistStatics(Translate, WrappedComponent);
 }
 
 export default translate;
