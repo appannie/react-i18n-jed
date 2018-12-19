@@ -4,6 +4,8 @@ import * as React from 'react';
 import type { I18nType } from '.';
 import { I18nContext } from './I18nProvider';
 
+type InjectedProps = { i18n: I18nType };
+
 declare class TranslatedComponent<OP> extends React$Component<OP> {
     static WrappedComponent: Class<React$Component<OP>>;
     static displayName: ?string;
@@ -13,9 +15,10 @@ declare class TranslatedComponent<OP> extends React$Component<OP> {
 
 declare type TranslatedComponentClass<OP> = Class<TranslatedComponent<OP>>;
 
-function translate<Props>(
-    WrappedComponent: React.ComponentType<$Supertype<{ i18n: I18nType } & Props>>
-): TranslatedComponentClass<Props> {
+function translate<
+    Com: React$ComponentType<*>,
+    Props: $Diff<React.ElementConfig<Com>, InjectedProps>
+>(WrappedComponent: Com): TranslatedComponentClass<Props> {
     class Translate extends React.Component<Props> {
         static WrappedComponent = WrappedComponent;
 
