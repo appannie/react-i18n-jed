@@ -11,4 +11,4 @@ const StatelessCom = ({ name, i18n }: { name: string, i18n: I18nType }) => (
 );
 const TStatelessCom = translate(StatelessCom);
 // Should throw error for missing required prop content
-result = <TStatelessCom />;
+const result = <TStatelessCom />;
