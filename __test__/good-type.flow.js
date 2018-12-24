@@ -96,10 +96,14 @@ const TComponentDisplayName = TComponentC.displayName;
 
 class DisplayComponent1 extends React.Component<{}> {
     render() {
-        return <div><TComponentC content="foo" >child</TComponentC></div>
+        return (
+            <div>
+                <TComponentC content="foo">child</TComponentC>
+            </div>
+        );
     }
 }
-const display1 = <DisplayComponent1 />
+const display1 = <DisplayComponent1 />;
 
 // Case 4: class component with defaultProps
 class ComponentD extends React.Component<{
@@ -128,29 +132,33 @@ class ComponentD extends React.Component<{
     }
 }
 
-const componentD = <ComponentD age={12} i18n={mockI18n} />
+const componentD = <ComponentD age={12} i18n={mockI18n} />;
 const TComponentD = translate(ComponentD);
 
 result = <TComponentD age={12} />;
 
 class DisplayComponent2 extends React.Component<{}> {
     render() {
-        return <div><TComponentD age={12} /></div>
+        return (
+            <div>
+                <TComponentD age={12} />
+            </div>
+        );
     }
 }
-const display2= <DisplayComponent2 />
+const display2 = <DisplayComponent2 />;
 
 // Case 5: React stateless component
-const StatelessCom = ({name, i18n}: {name: string, i18n: I18nType}) => <div>{i18n.gettext('S')}</div>
+const StatelessCom = ({ name, i18n }: { name: string, i18n: I18nType }) => (
+    <div>{i18n.gettext('S')}</div>
+);
 const TStatelessCom = translate(StatelessCom);
 
 result = <TStatelessCom name="Kate" />;
 
 class DisplayComponent3 extends React.Component<{}> {
     render() {
-        return <div>{result}</div>
+        return <div>{result}</div>;
     }
 }
-const display3 = <DisplayComponent3/>
-
-
+const display3 = <DisplayComponent3 />;

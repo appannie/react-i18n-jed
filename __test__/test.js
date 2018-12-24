@@ -83,6 +83,19 @@ describe('translate Component', () => {
         const localizedEle = mount(<LocalizedEle i18n={mockI18n} testProp="required" />);
         expect(localizedEle).toMatchSnapshot();
     });
+
+    it('render anonymous component', () => {
+        const LocalizedEle = translate(
+            ({ i18n, testProp }: { i18n: I18nType, testProp: string }) => (
+                <div>
+                    {i18n.gettext('My')}
+                    {testProp}
+                </div>
+            )
+        );
+        const localizedEle = mount(<LocalizedEle i18n={mockI18n} testProp="required" />);
+        expect(localizedEle).toMatchSnapshot();
+    });
 });
 
 describe('mock i18n', () => {
