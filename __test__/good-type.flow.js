@@ -24,6 +24,7 @@ const ComponentA = ({
 );
 
 const TComponentA = translate(ComponentA);
+const TComponentAB = translate<React.ElementConfig<typeof ComponentA>>(ComponentA);
 result = <TComponentA content="foo">bar</TComponentA>;
 result = (
     <TComponentA.WrappedComponent content="foo" i18n={mockI18n}>

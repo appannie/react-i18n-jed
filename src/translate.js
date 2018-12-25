@@ -5,7 +5,7 @@ import hoistStatics from 'hoist-non-react-statics';
 import type { I18nType } from '.';
 import { I18nContext } from './I18nProvider';
 
-function translate<Config: { i18n: I18nType }>(
+function translate<Config: { +i18n: I18nType }>(
     WrappedComponent: React.AbstractComponent<Config>
 ): React.AbstractComponent<$Diff<Config, { i18n: I18nType }>> & {
     WrappedComponent: React.AbstractComponent<Config>,
