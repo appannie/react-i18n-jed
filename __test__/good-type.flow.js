@@ -24,6 +24,7 @@ const ComponentA = ({
 );
 
 const TComponentA = translate(ComponentA);
+export const ComponentA2 = translate<typeof ComponentA>(ComponentA);
 result = <TComponentA content="foo">bar</TComponentA>;
 result = (
     <TComponentA.WrappedComponent content="foo" i18n={mockI18n}>
@@ -55,6 +56,7 @@ class ComponentB extends React.PureComponent<{
 }
 
 const TComponentB = translate(ComponentB);
+export const ComponentB2 = translate<typeof ComponentB>(ComponentB);
 result = <TComponentB content="foo">bar</TComponentB>;
 
 // Case 3: class component with static
@@ -85,6 +87,7 @@ class ComponentC extends React.Component<{
 }
 
 const TComponentC = translate(ComponentC);
+export const ComponentC2 = translate<typeof ComponentC>(ComponentC);
 result = <TComponentC content="foo">bar</TComponentC>;
 
 ComponentC.method('foo');
@@ -96,10 +99,14 @@ const TComponentDisplayName = TComponentC.displayName;
 
 class DisplayComponent1 extends React.Component<{}> {
     render() {
-        return <div><TComponentC content="foo" >child</TComponentC></div>
+        return (
+            <div>
+                <TComponentC content="foo">child</TComponentC>
+            </div>
+        );
     }
 }
-const display1 = <DisplayComponent1 />
+const display1 = <DisplayComponent1 />;
 
 // Case 4: class component with defaultProps
 class ComponentD extends React.Component<{
@@ -128,29 +135,34 @@ class ComponentD extends React.Component<{
     }
 }
 
-const componentD = <ComponentD age={12} i18n={mockI18n} />
+const componentD = <ComponentD age={12} i18n={mockI18n} />;
 const TComponentD = translate(ComponentD);
+export const ComponentD2 = translate<typeof ComponentD>(ComponentD);
 
 result = <TComponentD age={12} />;
 
 class DisplayComponent2 extends React.Component<{}> {
     render() {
-        return <div><TComponentD age={12} /></div>
+        return (
+            <div>
+                <TComponentD age={12} />
+            </div>
+        );
     }
 }
-const display2= <DisplayComponent2 />
+const display2 = <DisplayComponent2 />;
 
 // Case 5: React stateless component
-const StatelessCom = ({name, i18n}: {name: string, i18n: I18nType}) => <div>{i18n.gettext('S')}</div>
+const StatelessCom = ({ name, i18n }: { name: string, i18n: I18nType }) => (
+    <div>{i18n.gettext('S')}</div>
+);
 const TStatelessCom = translate(StatelessCom);
 
 result = <TStatelessCom name="Kate" />;
 
 class DisplayComponent3 extends React.Component<{}> {
     render() {
-        return <div>{result}</div>
+        return <div>{result}</div>;
     }
 }
-const display3 = <DisplayComponent3/>
-
-
+const display3 = <DisplayComponent3 />;
