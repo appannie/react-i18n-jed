@@ -16,15 +16,17 @@ declare class TranslatedComponent<OP> extends React$Component<OP> {
 
 declare type TranslatedComponentClass<OP> = Class<TranslatedComponent<OP>>;
 
-function translate<
-    Com: React$ComponentType<*>,
-    Props: $Diff<React.ElementConfig<Com>, InjectedProps>
->(WrappedComponent: Com): TranslatedComponentClass<Props> {
-    class Translate extends React.Component<Props> {
+function translate<Com: React$ComponentType<*>>(
+    WrappedComponent: Com
+): TranslatedComponentClass<$Diff<React.ElementConfig<Com>, InjectedProps>> {
+    const name = WrappedComponent.displayName || WrappedComponent.name || 'Component';
+
+    class Translate extends React.Component<
+        $Diff<React.ElementConfig<Com>, InjectedProps>
+    > {
         static WrappedComponent = WrappedComponent;
 
-        static displayName = `Translate(${WrappedComponent.displayName ||
-            WrappedComponent.name})`;
+        static displayName = `Translate(${name})`;
 
         render() {
             return (
