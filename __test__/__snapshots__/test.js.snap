@@ -27,10 +27,10 @@ exports[`<I18nProvider> children get i18n from I18nProvider 2`] = `
     }
   }
 >
-  <ForwardRef
+  <Translate(TestElement)
     testProp="required"
   >
-    <Translate(TestElement)
+    <Translate
       forwardedRef={null}
       testProp="required"
     >
@@ -50,13 +50,13 @@ exports[`<I18nProvider> children get i18n from I18nProvider 2`] = `
           Test
         </div>
       </TestElement>
-    </Translate(TestElement)>
-  </ForwardRef>
+    </Translate>
+  </Translate(TestElement)>
 </I18nProvider>
 `;
 
 exports[`translate Component render anonymous component 1`] = `
-<ForwardRef
+<Translate(Component)
   i18n={
     Object {
       "gettext": [Function],
@@ -68,7 +68,7 @@ exports[`translate Component render anonymous component 1`] = `
   }
   testProp="required"
 >
-  <Translate(Component)
+  <Translate
     forwardedRef={null}
     i18n={
       Object {
@@ -98,8 +98,8 @@ exports[`translate Component render anonymous component 1`] = `
         required
       </div>
     </Component>
-  </Translate(Component)>
-</ForwardRef>
+  </Translate>
+</Translate(Component)>
 `;
 
 exports[`translate Component render translated component 1`] = `
@@ -109,7 +109,7 @@ exports[`translate Component render translated component 1`] = `
 `;
 
 exports[`translate Component render translated stateless component 1`] = `
-<ForwardRef
+<Translate(StatelessTest)
   i18n={
     Object {
       "gettext": [Function],
@@ -121,7 +121,7 @@ exports[`translate Component render translated stateless component 1`] = `
   }
   testProp="required"
 >
-  <Translate(StatelessTest)
+  <Translate
     forwardedRef={null}
     i18n={
       Object {
@@ -151,6 +151,6 @@ exports[`translate Component render translated stateless component 1`] = `
         required
       </div>
     </StatelessTest>
-  </Translate(StatelessTest)>
-</ForwardRef>
+  </Translate>
+</Translate(StatelessTest)>
 `;

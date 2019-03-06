@@ -26,8 +26,6 @@ function translate<Com: React$ComponentType<*>>(
     > {
         static WrappedComponent = WrappedComponent;
 
-        static displayName = `Translate(${name})`;
-
         render() {
             const { forwardedRef, ...restProps } = this.props;
             return (
@@ -43,6 +41,8 @@ function translate<Com: React$ComponentType<*>>(
     const ForwardedComponent = React.forwardRef((props, ref) => (
         <Translate {...props} forwardedRef={ref} />
     ));
+
+    ForwardedComponent.displayName = `Translate(${name})`;
 
     return (hoistStatics(ForwardedComponent, WrappedComponent): any);
 }
