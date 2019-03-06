@@ -96,6 +96,17 @@ describe('translate Component', () => {
         const localizedEle = mount(<LocalizedEle i18n={mockI18n} testProp="required" />);
         expect(localizedEle).toMatchSnapshot();
     });
+
+    // it('should inherit static methods properly', () => {
+    //     class A extends React.Component {
+    //         static test3 = 'A';
+    //         static test4 = 'D';
+    //         static getMeta() { return {}; };
+    //         test5 = 'foo';
+    //     }
+    //     const B = translate(A);
+    //     expect(B.test5).toEqual()
+    // });
 });
 
 describe('mock i18n', () => {
