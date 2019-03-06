@@ -103,35 +103,9 @@ exports[`translate Component render anonymous component 1`] = `
 `;
 
 exports[`translate Component render translated component 1`] = `
-<Translate(TestElement)
-  i18n={
-    Object {
-      "gettext": [Function],
-      "lang": "en-US",
-      "ngettext": [Function],
-      "npgettext": [Function],
-      "pgettext": [Function],
-    }
-  }
-  testProp="required"
->
-  <TestElement
-    i18n={
-      Object {
-        "gettext": [Function],
-        "lang": "en-US",
-        "ngettext": [Function],
-        "npgettext": [Function],
-        "pgettext": [Function],
-      }
-    }
-    testProp="required"
-  >
-    <div>
-      Test
-    </div>
-  </TestElement>
-</Translate(TestElement)>
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
 `;
 
 exports[`translate Component render translated stateless component 1`] = `

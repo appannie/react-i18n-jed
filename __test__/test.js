@@ -1,6 +1,6 @@
 // @flow strict
 import React from 'react';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import { Jed, translate, I18nProvider, type I18nType } from '../src';
 import mockI18n from '../src/mockI18n';
 
@@ -59,7 +59,10 @@ describe('<I18nProvider>', () => {
 describe('translate Component', () => {
     it('render translated component', () => {
         const LocalizedEle = translate(TestElement);
-        const localizedEle = mount(<LocalizedEle i18n={mockI18n} testProp="required" />);
+        const localizedEle = shallow(
+            <LocalizedEle i18n={mockI18n} testProp="required" />
+        ).dive();
+
         const instEle = localizedEle.instance();
         expect(instEle.props.i18n).toEqual(mockI18n);
         expect(localizedEle).toMatchSnapshot();
@@ -97,16 +100,33 @@ describe('translate Component', () => {
         expect(localizedEle).toMatchSnapshot();
     });
 
-    // it('should inherit static methods properly', () => {
-    //     class A extends React.Component {
-    //         static test3 = 'A';
-    //         static test4 = 'D';
-    //         static getMeta() { return {}; };
-    //         test5 = 'foo';
-    //     }
-    //     const B = translate(A);
-    //     expect(B.test5).toEqual()
-    // });
+    it('should inherit ref properly', () => {
+        class A extends React.Component<{ i18n: I18nType }, {}> {
+            getName = () => 'NameA';
+
+            render() {
+                return <div />;
+            }
+        }
+
+        const B = translate(A);
+
+        class C extends React.Component<{}, {}> {
+            ref = React.createRef();
+
+            test = () => {
+                const { current } = this.ref;
+                return current ? current.getName() : '';
+            };
+
+            render() {
+                return <B ref={this.ref} />;
+            }
+        }
+        const Test = mount(<C />);
+        const instance = Test.instance();
+        expect(instance.test()).toEqual('NameA');
+    });
 });
 
 describe('mock i18n', () => {
