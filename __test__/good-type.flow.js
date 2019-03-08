@@ -24,7 +24,7 @@ const ComponentA = ({
 );
 
 const TComponentA = translate(ComponentA);
-export const ComponentA2 = translate<typeof ComponentA>(ComponentA);
+export const ComponentA2 = translate<*, *>(ComponentA);
 result = <TComponentA content="foo">bar</TComponentA>;
 result = (
     <TComponentA.WrappedComponent content="foo" i18n={mockI18n}>
@@ -56,7 +56,7 @@ class ComponentB extends React.PureComponent<{
 }
 
 const TComponentB = translate(ComponentB);
-export const ComponentB2 = translate<typeof ComponentB>(ComponentB);
+export const ComponentB2 = translate<*, *>(ComponentB);
 result = <TComponentB content="foo">bar</TComponentB>;
 
 // Case 3: class component with static
@@ -87,7 +87,7 @@ class ComponentC extends React.Component<{
 }
 
 const TComponentC = translate(ComponentC);
-export const ComponentC2 = translate<typeof ComponentC>(ComponentC);
+export const ComponentC2 = translate<*, *>(ComponentC);
 result = <TComponentC content="foo">bar</TComponentC>;
 
 ComponentC.method('foo');
@@ -137,7 +137,7 @@ class ComponentD extends React.Component<{
 
 const componentD = <ComponentD age={12} i18n={mockI18n} />;
 const TComponentD = translate(ComponentD);
-export const ComponentD2 = translate<typeof ComponentD>(ComponentD);
+export const ComponentD2 = translate<*, *>(ComponentD);
 
 result = <TComponentD age={12} />;
 
