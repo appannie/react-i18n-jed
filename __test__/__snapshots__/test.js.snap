@@ -50,6 +50,14 @@ exports[`<I18nProvider> children get i18n from I18nProvider 2`] = `
 </I18nProvider>
 `;
 
+exports[`i18n hook get i18n by useI18n 1`] = `
+<Fake>
+  <span>
+    Fake
+  </span>
+</Fake>
+`;
+
 exports[`translate Component render anonymous component 1`] = `
 <Translate(Component)
   i18n={

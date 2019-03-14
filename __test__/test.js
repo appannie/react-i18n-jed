@@ -1,7 +1,7 @@
 // @flow strict
 import React from 'react';
 import { mount } from 'enzyme';
-import { Jed, translate, I18nProvider, type I18nType } from '../src';
+import { Jed, translate, useI18n, I18nProvider, type I18nType } from '../src';
 import mockI18n from '../src/mockI18n';
 
 const localeJSON = {
@@ -33,6 +33,18 @@ describe('get i18n by Jed', () => {
     it('gettext by Jed', () => {
         const i18n = new Jed(localeJSON);
         expect(i18n.gettext('Ad Expense')).toBe('Test Ad Expense');
+    });
+});
+
+describe('i18n hook', () => {
+    it('get i18n by useI18n', () => {
+        const Fake = () => {
+            const i18n = useI18n();
+
+            return <span>{i18n.gettext('Fake')}</span>;
+        };
+
+        expect(mount(<Fake />)).toMatchSnapshot();
     });
 });
 
