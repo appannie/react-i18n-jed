@@ -61,6 +61,7 @@ describe('translate Component', () => {
         const LocalizedEle = translate(TestElement);
         const localizedEle = mount(<LocalizedEle i18n={mockI18n} testProp="required" />);
         const instEle = localizedEle.instance();
+        // $FlowFixMe
         expect(instEle.props.i18n).toEqual(mockI18n);
         expect(localizedEle).toMatchSnapshot();
     });
