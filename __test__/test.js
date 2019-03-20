@@ -2,6 +2,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { Jed, translate, useI18n, I18nProvider, type I18nType } from '../src';
+import I18nContext from '../src/I18nContext';
 import mockI18n from '../src/mockI18n';
 
 const localeJSON = {
@@ -44,7 +45,22 @@ describe('i18n hook', () => {
             return <span>{i18n.gettext('Fake')}</span>;
         };
 
-        expect(mount(<Fake />)).toMatchSnapshot();
+        const fakeI18n = {
+            gettext: key => {
+                const translation = {
+                    Fake: 'Translated Fake',
+                };
+
+                return translation[key];
+            },
+        };
+        const t = mount(
+            <I18nContext.Provider value={fakeI18n}>
+                <Fake />
+            </I18nContext.Provider>
+        );
+
+        expect(t.find('span').text()).toEqual('Translated Fake');
     });
 });
 
