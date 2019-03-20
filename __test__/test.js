@@ -46,6 +46,7 @@ describe('i18n hook', () => {
         };
 
         const fakeI18n = {
+            ...mockI18n,
             gettext: key => {
                 const translation = {
                     Fake: 'Translated Fake',
