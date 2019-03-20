@@ -1,7 +1,8 @@
 // @flow strict
 import React from 'react';
 import { mount } from 'enzyme';
-import { Jed, translate, I18nProvider, type I18nType } from '../src';
+import { Jed, translate, useI18n, I18nProvider, type I18nType } from '../src';
+import I18nContext from '../src/I18nContext';
 import mockI18n from '../src/mockI18n';
 
 const localeJSON = {
@@ -36,6 +37,34 @@ describe('get i18n by Jed', () => {
     });
 });
 
+describe('i18n hook', () => {
+    it('get i18n by useI18n', () => {
+        const Fake = () => {
+            const i18n = useI18n();
+
+            return <span>{i18n.gettext('Fake')}</span>;
+        };
+
+        const fakeI18n = {
+            ...mockI18n,
+            gettext: key => {
+                const translation = {
+                    Fake: 'Translated Fake',
+                };
+
+                return translation[key];
+            },
+        };
+        const t = mount(
+            <I18nContext.Provider value={fakeI18n}>
+                <Fake />
+            </I18nContext.Provider>
+        );
+
+        expect(t.find('span').text()).toEqual('Translated Fake');
+    });
+});
+
 describe('<I18nProvider>', () => {
     it('children get i18n from I18nProvider', () => {
         const LocalizedTest = translate(TestElement);
@@ -61,6 +90,7 @@ describe('translate Component', () => {
         const LocalizedEle = translate(TestElement);
         const localizedEle = mount(<LocalizedEle i18n={mockI18n} testProp="required" />);
         const instEle = localizedEle.instance();
+        // $FlowFixMe
         expect(instEle.props.i18n).toEqual(mockI18n);
         expect(localizedEle).toMatchSnapshot();
     });
