@@ -1,6 +1,6 @@
 // @flow strict
 import React from 'react';
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import { Jed, translate, useI18n, I18nProvider, type I18nType } from '../src';
 import I18nContext from '../src/I18nContext';
 import mockI18n from '../src/mockI18n';
@@ -68,9 +68,7 @@ describe('i18n hook', () => {
 describe('<I18nProvider>', () => {
     it('children get i18n from I18nProvider', () => {
         const LocalizedTest = translate(TestElement);
-        const WrappedTest = LocalizedTest.WrappedComponent;
-
-        expect(<WrappedTest testProp="required" i18n={mockI18n} />).toMatchSnapshot();
+        expect(<LocalizedTest testProp="required" i18n={mockI18n} />).toMatchSnapshot();
 
         const eleWithProvider = mount(
             <I18nProvider i18n={mockI18n}>
@@ -88,9 +86,7 @@ describe('<I18nProvider>', () => {
 describe('translate Component', () => {
     it('render translated component', () => {
         const LocalizedEle = translate(TestElement);
-        const localizedEle = shallow(
-            <LocalizedEle i18n={mockI18n} testProp="required" />
-        ).dive();
+        const localizedEle = mount(<LocalizedEle i18n={mockI18n} testProp="required" />);
         const instEle = localizedEle.instance();
         // $FlowFixMe
         expect(instEle.props.i18n).toEqual(mockI18n);
@@ -145,7 +141,6 @@ describe('translate Component', () => {
 
             test = () => {
                 const { current } = this.ref;
-                // $FlowFixMe
                 if (current && typeof current.getName === 'function') {
                     return current.getName();
                 }
@@ -153,7 +148,7 @@ describe('translate Component', () => {
             };
 
             render() {
-                return <B ref={this.ref} />;
+                return <B innerRef={this.ref} />;
             }
         }
         const Test = mount(<C />);
