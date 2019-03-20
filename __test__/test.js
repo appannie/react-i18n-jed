@@ -1,6 +1,6 @@
 // @flow strict
 import React from 'react';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import { Jed, translate, useI18n, I18nProvider, type I18nType } from '../src';
 import I18nContext from '../src/I18nContext';
 import mockI18n from '../src/mockI18n';
@@ -88,7 +88,9 @@ describe('<I18nProvider>', () => {
 describe('translate Component', () => {
     it('render translated component', () => {
         const LocalizedEle = translate(TestElement);
-        const localizedEle = mount(<LocalizedEle i18n={mockI18n} testProp="required" />);
+        const localizedEle = shallow(
+            <LocalizedEle i18n={mockI18n} testProp="required" />
+        ).dive();
         const instEle = localizedEle.instance();
         // $FlowFixMe
         expect(instEle.props.i18n).toEqual(mockI18n);
@@ -125,6 +127,38 @@ describe('translate Component', () => {
         );
         const localizedEle = mount(<LocalizedEle i18n={mockI18n} testProp="required" />);
         expect(localizedEle).toMatchSnapshot();
+    });
+
+    it('should inherit ref properly', () => {
+        class A extends React.Component<{ i18n: I18nType }, {}> {
+            getName = () => 'NameA';
+
+            render() {
+                return <div />;
+            }
+        }
+
+        const B = translate(A);
+
+        class C extends React.Component<{}, {}> {
+            ref = React.createRef();
+
+            test = () => {
+                const { current } = this.ref;
+                // $FlowFixMe
+                if (current && typeof current.getName === 'function') {
+                    return current.getName();
+                }
+                return '';
+            };
+
+            render() {
+                return <B ref={this.ref} />;
+            }
+        }
+        const Test = mount(<C />);
+        const instance = Test.instance();
+        expect(instance.test()).toEqual('NameA');
     });
 });
 

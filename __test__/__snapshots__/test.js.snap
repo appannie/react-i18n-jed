@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<I18nProvider> children get i18n from I18nProvider 1`] = `
-<TestElement
+<UNDEFINED
   i18n={
     Object {
       "gettext": [Function],
@@ -30,22 +30,27 @@ exports[`<I18nProvider> children get i18n from I18nProvider 2`] = `
   <Translate(TestElement)
     testProp="required"
   >
-    <TestElement
-      i18n={
-        Object {
-          "gettext": [Function],
-          "lang": "en-US",
-          "ngettext": [Function],
-          "npgettext": [Function],
-          "pgettext": [Function],
-        }
-      }
+    <Translate
+      forwardedRef={null}
       testProp="required"
     >
-      <div>
-        Test
-      </div>
-    </TestElement>
+      <TestElement
+        i18n={
+          Object {
+            "gettext": [Function],
+            "lang": "en-US",
+            "ngettext": [Function],
+            "npgettext": [Function],
+            "pgettext": [Function],
+          }
+        }
+        testProp="required"
+      >
+        <div>
+          Test
+        </div>
+      </TestElement>
+    </Translate>
   </Translate(TestElement)>
 </I18nProvider>
 `;
@@ -63,7 +68,8 @@ exports[`translate Component render anonymous component 1`] = `
   }
   testProp="required"
 >
-  <Component
+  <Translate
+    forwardedRef={null}
     i18n={
       Object {
         "gettext": [Function],
@@ -75,44 +81,31 @@ exports[`translate Component render anonymous component 1`] = `
     }
     testProp="required"
   >
-    <div>
-      My
-      required
-    </div>
-  </Component>
+    <Component
+      i18n={
+        Object {
+          "gettext": [Function],
+          "lang": "en-US",
+          "ngettext": [Function],
+          "npgettext": [Function],
+          "pgettext": [Function],
+        }
+      }
+      testProp="required"
+    >
+      <div>
+        My
+        required
+      </div>
+    </Component>
+  </Translate>
 </Translate(Component)>
 `;
 
 exports[`translate Component render translated component 1`] = `
-<Translate(TestElement)
-  i18n={
-    Object {
-      "gettext": [Function],
-      "lang": "en-US",
-      "ngettext": [Function],
-      "npgettext": [Function],
-      "pgettext": [Function],
-    }
-  }
-  testProp="required"
->
-  <TestElement
-    i18n={
-      Object {
-        "gettext": [Function],
-        "lang": "en-US",
-        "ngettext": [Function],
-        "npgettext": [Function],
-        "pgettext": [Function],
-      }
-    }
-    testProp="required"
-  >
-    <div>
-      Test
-    </div>
-  </TestElement>
-</Translate(TestElement)>
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
 `;
 
 exports[`translate Component render translated stateless component 1`] = `
@@ -128,7 +121,8 @@ exports[`translate Component render translated stateless component 1`] = `
   }
   testProp="required"
 >
-  <StatelessTest
+  <Translate
+    forwardedRef={null}
     i18n={
       Object {
         "gettext": [Function],
@@ -140,10 +134,23 @@ exports[`translate Component render translated stateless component 1`] = `
     }
     testProp="required"
   >
-    <div>
-      My
-      required
-    </div>
-  </StatelessTest>
+    <StatelessTest
+      i18n={
+        Object {
+          "gettext": [Function],
+          "lang": "en-US",
+          "ngettext": [Function],
+          "npgettext": [Function],
+          "pgettext": [Function],
+        }
+      }
+      testProp="required"
+    >
+      <div>
+        My
+        required
+      </div>
+    </StatelessTest>
+  </Translate>
 </Translate(StatelessTest)>
 `;

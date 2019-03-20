@@ -26,18 +26,25 @@ function translate<Com: React$ComponentType<*>>(
     > {
         static WrappedComponent = WrappedComponent;
 
-        static displayName = `Translate(${name})`;
-
         render() {
+            const { forwardedRef, ...restProps } = this.props;
             return (
                 <I18nContext.Consumer>
-                    {i18n => <WrappedComponent i18n={i18n} {...this.props} />}
+                    {i18n => (
+                        <WrappedComponent ref={forwardedRef} i18n={i18n} {...restProps} />
+                    )}
                 </I18nContext.Consumer>
             );
         }
     }
 
-    return (hoistStatics(Translate, WrappedComponent): any);
+    const ForwardedComponent = React.forwardRef((props, ref) => (
+        <Translate {...props} forwardedRef={ref} />
+    ));
+
+    ForwardedComponent.displayName = `Translate(${name})`;
+
+    return (hoistStatics(ForwardedComponent, WrappedComponent): any);
 }
 
 export default translate;
