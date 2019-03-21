@@ -69,7 +69,6 @@ describe('<I18nProvider>', () => {
     it('children get i18n from I18nProvider', () => {
         const LocalizedTest = translate(TestElement);
         const WrappedTest = LocalizedTest.WrappedComponent;
-
         expect(<WrappedTest testProp="required" i18n={mockI18n} />).toMatchSnapshot();
 
         const eleWithProvider = mount(
@@ -125,6 +124,37 @@ describe('translate Component', () => {
         );
         const localizedEle = mount(<LocalizedEle i18n={mockI18n} testProp="required" />);
         expect(localizedEle).toMatchSnapshot();
+    });
+
+    it('should inherit ref properly', () => {
+        class A extends React.Component<{ i18n: I18nType }, {}> {
+            getName = () => 'NameA';
+
+            render() {
+                return <div />;
+            }
+        }
+
+        const B = translate(A);
+
+        class C extends React.Component<{}, {}> {
+            ref = React.createRef();
+
+            test = () => {
+                const { current } = this.ref;
+                if (current && typeof current.getName === 'function') {
+                    return current.getName();
+                }
+                return '';
+            };
+
+            render() {
+                return <B innerRef={this.ref} />;
+            }
+        }
+        const Test = mount(<C />);
+        const instance = Test.instance();
+        expect(instance.test()).toEqual('NameA');
     });
 });
 

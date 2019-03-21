@@ -29,14 +29,17 @@ function translate<Com: React$ComponentType<*>>(
         static displayName = `Translate(${name})`;
 
         render() {
+            const { innerRef, ...restProps } = this.props;
+
             return (
                 <I18nContext.Consumer>
-                    {i18n => <WrappedComponent i18n={i18n} {...this.props} />}
+                    {i18n => (
+                        <WrappedComponent ref={innerRef} i18n={i18n} {...restProps} />
+                    )}
                 </I18nContext.Consumer>
             );
         }
     }
-
     return (hoistStatics(Translate, WrappedComponent): any);
 }
 
