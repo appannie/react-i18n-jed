@@ -68,7 +68,8 @@ describe('i18n hook', () => {
 describe('<I18nProvider>', () => {
     it('children get i18n from I18nProvider', () => {
         const LocalizedTest = translate(TestElement);
-        expect(<LocalizedTest testProp="required" i18n={mockI18n} />).toMatchSnapshot();
+        const WrappedTest = LocalizedTest.WrappedComponent;
+        expect(<WrappedTest testProp="required" i18n={mockI18n} />).toMatchSnapshot();
 
         const eleWithProvider = mount(
             <I18nProvider i18n={mockI18n}>
