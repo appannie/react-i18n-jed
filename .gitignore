@@ -3,3 +3,5 @@ node_modules
 flow-typed
 dist
 .DS_Store
+yarn.lock
+package-lock.json
