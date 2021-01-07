@@ -4,7 +4,8 @@
   "description": "React i18n wrapper for jed, based on gettext",
   "author": "App Annie Engineering",
   "files": [
-    "dist"
+    "dist",
+    "index.d.ts"
   ],
   "main": "dist/index.js",
   "keywords": [
