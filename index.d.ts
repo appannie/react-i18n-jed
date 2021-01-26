@@ -1,13 +1,16 @@
-import { ReactNode, ComponentType } from 'react';
+import { ReactNode, ComponentType, ComponentClass } from 'react';
 
 declare namespace reactI18nJed {
     export const I18nProvider: ComponentType<{ i18n: I18n; children?: ReactNode }>;
+    interface Translate {
+        <P extends { i18n: I18n }>(x: ComponentType<P>): ComponentClass<Omit<P, 'i18n'>>;
+    }
 
-    export const translate: ComponentType<T>;
+    export const translate: Translate;
 
     export const useI18n: () => I18n;
 
-    export const sprintf: (...rest: string) => string;
+    export const sprintf: (arg0: string, ...rest: (string | number)[]) => string;
 
     export interface I18n {
         lang: string;
