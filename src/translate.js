@@ -2,7 +2,7 @@
 /* eslint-disable no-redeclare */
 import * as React from 'react';
 import hoistStatics from 'hoist-non-react-statics';
-import type { I18nType } from '.';
+import type { I18nType } from './types';
 import { I18nContext } from './I18nProvider';
 
 type InjectedProps = { i18n: I18nType };
