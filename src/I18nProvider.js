@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import { type I18nType } from '.';
+import { type I18nType } from './types';
 import I18nContext from './I18nContext';
 
 const I18nProvider = ({ i18n, children }: { i18n: I18nType, children?: React.Node }) => (

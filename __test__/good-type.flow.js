@@ -1,7 +1,8 @@
 // @flow strict
 /* eslint-disable */
 import * as React from 'react';
-import { translate, type I18nType } from '../src';
+import { translate } from '../src';
+import { type I18nType } from '../src/types';
 import mockI18n from '../src/mockI18n';
 
 let result;

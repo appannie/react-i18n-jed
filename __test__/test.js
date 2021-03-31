@@ -1,7 +1,8 @@
 // @flow strict
 import React from 'react';
 import { mount } from 'enzyme';
-import { Jed, translate, useI18n, I18nProvider, type I18nType } from '../src';
+import { Jed, translate, useI18n, I18nProvider } from '../src';
+import { type I18nType } from '../src/types';
 import I18nContext from '../src/I18nContext';
 import mockI18n from '../src/mockI18n';
 
